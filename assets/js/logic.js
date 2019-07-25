@@ -110,7 +110,9 @@ $(window).on("load", function () {
         console.log("add tag");
         var newTag = $("#tag-input").val().trim();
         $("#tag-input").val('');
-        addTag(newTag);
+        if(newTag!=''){
+            addTag(newTag);
+    }
     });
 
     $(document).on("click", ".giphy-image", function(){

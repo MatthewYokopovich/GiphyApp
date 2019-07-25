@@ -2,7 +2,6 @@
     float: left;
     margin: 1%;
     text-align: center;
-    max-width: 30%;
 }
 .tag{
     margin: 1%;
@@ -10,6 +9,9 @@
 .fav{
     margin: 0%;
     max-width: 50%;
+}
+.giphy-image{
+    max-width: 100%;
 }
 /* 
   ##Device = Desktops
