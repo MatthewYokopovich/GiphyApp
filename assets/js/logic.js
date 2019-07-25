@@ -83,7 +83,15 @@ function display(tagstr) {
 }
 
 function displayFav(){
-    $("#favrow").append($("[data-state='animate']").parent().addClass("fav"));
+    $("[data-state='animate']").parent().each(function(){
+        if($(this).hasClass("fav")){
+
+        }
+        else{
+            $("#favrow").append($(this).addClass("fav"));
+        }
+    })
+    // $("#favrow").append($("[data-state='animate']").parent().addClass("fav"));
 }
 
 function addTag(newTag) {
