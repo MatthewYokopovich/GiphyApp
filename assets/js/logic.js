@@ -13,6 +13,8 @@ function generateButtons() {
         newbut.addClass("tag");
         newbut.attr("data-name", topics[i]);
         newbut.text(topics[i]);
+        newbut.addClass("btn btn-primary");
+        newbut.attr("type", "button");
         $("#btnrow").append(newbut);
     }
 }
@@ -33,7 +35,8 @@ function display(tagstr) {
                 ids.push(element.id);
                 var newdiv = $("<div>");
                 var newstr = $("<p>");
-                newstr.text("Rating: "+element.rating);
+                newstr.text(element.title+" | Rating: "+element.rating);
+                newstr.addClass("giphy-text");
                 newdiv.append(newstr);
                 var newimg = $("<img>").attr("src", element.images.fixed_height_still.url);
                 newimg.attr("data-still", element.images.fixed_height_still.url);
@@ -61,12 +64,14 @@ function display(tagstr) {
                         ids.push(element2.id);
                         var newdiv = $("<div>");
                         var newstr = $("<p>");
-                        newstr.text("Rating: "+element2.rating);
+                        newstr.text(element2.title+" | Rating: "+element2.rating);
+                        newstr.addClass("giphy-text");
                         newdiv.append(newstr);
                         var newimg = $("<img>").attr("src", element2.images.fixed_height_still.url);
                         newimg.attr("data-still", element2.images.fixed_height_still.url);
                         newimg.attr("data-animate", element2.images.fixed_height.url)
                         newimg.attr("data-state", "still");
+                        newimg.addClass("giphy-image");
                         newdiv.append(newimg);
                         newdiv.addClass("giphy-div");
                         $("#imgrow").append(newdiv);
@@ -75,6 +80,10 @@ function display(tagstr) {
             });
         }
     });
+}
+
+function displayFav(){
+    $("#favrow").append($("[data-state='animate']").parent().addClass("fav"));
 }
 
 function addTag(newTag) {
@@ -105,6 +114,15 @@ $(window).on("load", function () {
         else{
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
+        }
+    
+    });
+
+    $(document).keydown(function(event){
+        console.log(event.key);
+        if(event.key==='f'){
+            console.log($("[data-state='animate']"));
+            displayFav();
         }
     });
 });
